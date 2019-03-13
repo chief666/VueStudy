@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js表单练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			#app{
+				background-image: url(img/z1.jpg);
+				background-size: 100%, 100%;
+			}
+			
+			.row{
+				display: flex;
+			
+			}
+			.top {
+				display: flex;
+				margin: 0 auto;
+				align-items: center;
+				margin-left: 560px;
+			}
+			.box{
+				width: 300px;
+				height: 657px;
+				margin-left: 560px;
+				margin-bottom: 10px;
+				
+				border-radius: 10px;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="top">
+				<h2>欢迎进入注册界面</h2>
+			</div>
+			<div class="row" >
+				<div class="box">
+			<tr>
+				
+			<td>请输入姓名：</td>
+			<td>
+			<input v-model="name" placeholder="用户名"></td>
+			</tr>
+			<hr>
+			<td>请输入密码：</td>
+			<td>
+			<input v-model="password" placeholder="输入密码">
+			</td>
+			<hr>
+			<td>请确认密码：</td>
+			<input v-model="password1" placeholder="确认密码">
+			<hr>
+			<td>请输入邮箱：</td>
+			<td>
+			<input v-model="email" placeholder="输入邮箱">
+			</td>
+			<hr/>
+			<tr>
+				<td>爱好：</td>
+			<input type="checkbox" id="cs" value="CSGO" v-model="hobbies">
+			<label for="cs">cs</label>
+			<input type="checkbox" id="lol" value="LOL" v-model="hobbies">
+			<label for="lol">lol</label>
+			<input type="checkbox" id="java" value="JAVA" v-model="hobbies">
+			<label for="java">java</label>
+			<br>
+			<label>你一共选了{{hobbies.length}}个</label>
+			<hr>
+			</tr>
+			<input type="radio" id="man" value="man" v-model="picked">
+			<label for="man">男</label>
+			<br>
+			<input type="radio" id="woman" value="woman" v-model="picked">
+			<label for="woman">女</label>
+			<br>
+			<span>性别为: {{ picked }}</span>
+			<hr>
+			<select v-model="selected" name="fruit">
+				<option value="">选择一个班级</option>
+				<option >软件1721</option>
+				<option >软件1741</option>
+				<option >软件1621</option>
+			</select>
+			<br>
+			<p> 选择的班级是: {{selected}}</p>
+			<br>
+			<!-- <button type="button" @click="commit">提交</button> -->
+			<hr />
+			<tr>
+			    <td colspan="1">
+			        <input type="submit" value="注册" @click="commit"/>
+				</td>
+			</tr>
+			</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: '',
+					password:'',
+					password1:'',
+					hobbies: [],
+					picked: 'man',
+					selected: '',
+					email: ''
+				},
+				methods: {
+					commit: function() {
+						var name = this.name;
+						var password = this.password;
+						var password1 = this.password1;
+						var email =this.email;
+						if(name == ""){
+							alert("姓名不能为空");
+						}else if(password != password1){
+							alert("两次密码不一样，请重新确认密码");
+						}else if(email == ""){
+							alert("邮箱不能为空");
+						}else{
+						alert("姓名是："+this.name +"，性别是："+ this.picked +",班级是："+ this.selected +",爱好是："+ this.hobbies+",邮箱是："+this.email);
+						}
+					},
+					
+				}
+			})
+		</script>
+	</body>
+</html>

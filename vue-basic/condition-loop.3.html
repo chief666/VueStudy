@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue.js条件和循环的综合练习</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container{
+				width: 90%;
+				margin: 0 auto;
+			}
+			.row{
+				display: flex;
+			}
+			.top {
+				display: flex;
+				width: 90%;
+				margin: 0 auto;
+				align-items: center;
+				justify-content: space-between;
+				/* 子元水平方向两端对齐  (一左一右) */
+
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				margin-left: 10px;
+				margin-bottom: 10px;
+				padding: 10px 10px 10px 10px;
+				border-radius: 10px;
+			}
+			.img-cricle{
+				border-radius: 50%;
+				width: 100px;
+				height: 100px;
+			}
+			.n{
+				width: 500px;
+				margin-left: 10px;
+			}
+			.like{
+				float: right;
+			}
+			.d{
+				display: flex;
+				
+				
+				
+				border: 1px solid #EEEEEE;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="container">
+				<div class="top">
+					<h3>推荐作者</h3>
+					<h3>换一批</h3>
+				</div>
+			<div class="row" v-for="book in classes">
+				<div class="box">
+					<img src="img/book1.jpg" class="img-cricle">
+				</div>
+				<div class="n">
+				<p>{{book.name}}</p>
+				<p>{{book.write}}</p>
+				</div>
+				<div class="like">
+				<p v-if="book.like">已关注</p>
+				<p v-else>未关注</p>
+				</div>
+			</div>
+			<div class="d">
+				<p>查看全部</p>
+			</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: true,
+					classes: [{
+							
+							classname: 'Vue',
+							name: '朱林杰',
+							write:'写了1.6千字',
+							like: true
+						},
+						{
+							classname: 'JAVA',
+							name: '朱林杰',
+							write:'写了5.6千字',
+							like: false
+						},
+						{
+
+							classname: '高数',
+							name: '许濛濛',
+							write:'写了3.6千字',
+							like: true
+						},
+						{
+							classname: '体育',
+							name: '许濛濛',
+							write:'写了4.6千字',
+							like: false
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
